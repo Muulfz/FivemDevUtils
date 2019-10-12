@@ -16,7 +16,7 @@ namespace FivemSetup.Views
             menuOptions = consoleController.GetOptions();
         }
         
-        public async void Show()
+        public void Show()
         {
             Console.WriteLine("Escolha a opção desejada!");
             for (int i = 0; i < menuOptions.Count; i++)
@@ -24,17 +24,20 @@ namespace FivemSetup.Views
                 Console.WriteLine($"{i + 1} .{menuOptions[i]}");
             }
 
+            string menuOption = null;
             try
             {
                 var selection = int.Parse(Console.ReadLine());
-                var menuOption = menuOptions[selection-1];
-                await Controller.ActionSelection(menuOption);
+                 menuOption= menuOptions[selection-1];
             }
             catch (Exception e)
             {
+                Console.WriteLine(e);
                 Console.WriteLine("Input Invalido!");
                 Show();
             }
+            
+            Controller.ActionSelection(menuOption);
         }
         
         

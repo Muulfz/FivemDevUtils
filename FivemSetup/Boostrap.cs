@@ -15,7 +15,7 @@ namespace FivemSetup
 
         public ArtifactsService ArtifactsService { get; set; }
 
-        public async void start()
+        public void Start()
         {
             ArtifactsService = new ArtifactsService(FIVEM_ARTIFACTS_URL);
             var consoleController = new ConsoleController();

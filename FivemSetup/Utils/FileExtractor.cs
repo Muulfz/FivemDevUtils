@@ -4,7 +4,7 @@ namespace FivemSetup.Utils
 {
     public class FileExtractor
     {
-        public static async void Zip(string filePath, string extractLocation)
+        public static void Zip(string filePath, string extractLocation)
         {
             using (var zip = ZipFile.OpenRead(filePath))
             {

@@ -15,18 +15,15 @@
       <Compile Remove="Utils\ExtratFile.cs" />
       <Compile Remove="View\ConsoleViewOptions.cs" />
       <Compile Remove="View\**" />
+      <None Remove="Config.json" />
+      <Content Include="Config.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
     <ItemGroup>
       <None Remove="Config.Json.json" />
       <None Remove="View\**" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="Config.json" />
-      <Content Include="Config.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
     </ItemGroup>
 
     <ItemGroup>

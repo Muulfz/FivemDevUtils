@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -17,7 +18,8 @@ namespace FivemSetup.Services
         {
             _artifactsUrl = artifactsUrl;
             artifacts = new Dictionary<string, Artifact>();
-            UpdateList();
+            Task.Run((UpdateList));
+            
         }
 
         public async Task<IDictionary<string,Artifact>> UpdateList()
@@ -49,6 +51,11 @@ namespace FivemSetup.Services
         {
             using (WebClient webClient = new WebClient())
             {
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                    
+                }
                 var url = artifact.url();
                 webClient.DownloadProgressChanged += WebClientDownloadProgressChanged;
                 var file = $"{path}FivemArtifacts-ID-{artifact.id.ToString()}.zip";
@@ -60,7 +67,7 @@ namespace FivemSetup.Services
         
         static void WebClientDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            Console.Write("\b\b\b\b\b{0}",  $"{e.ProgressPercentage}%");
+            Console.Write("\b\b\b\b\b{0}",  $"{e.ProgressPercentage} %");
         }
 
     }

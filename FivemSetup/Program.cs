@@ -11,19 +11,17 @@ namespace FivemSetup
     class Program
     {
         public static Configuration Configuration;
-        
-        static async Task Main(string[] args)
-        {
-                
-            var readAllText = File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + @"\Config.json");
 
-           Configuration = JsonConvert.DeserializeObject<Configuration>(readAllText);
-            
+        static void Main(string[] args)
+        {
+            var readAllText = File.ReadAllText(Environment.CurrentDirectory + @"\Config.json");
+
+            Configuration = JsonConvert.DeserializeObject<Configuration>(readAllText);
+
             var boostrap = new Boostrap();
-            boostrap.start();
-            
+            boostrap.Start();
+
             Console.ReadKey();
         }
-        
     }
 }

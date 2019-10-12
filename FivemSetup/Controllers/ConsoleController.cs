@@ -26,7 +26,7 @@ namespace FivemSetup.Controllers
             };
         }
 
-        public async Task ActionSelection(string option)
+        public async void ActionSelection(string option)
         {
             await Setup();
         }
@@ -34,9 +34,12 @@ namespace FivemSetup.Controllers
 
         private async Task Setup()
         {
+            Console.WriteLine(Program.Configuration.serverCorePath);
             var download = await _artifactsService.Download(_artifactsService.artifacts.First().Value,
                 Program.Configuration.serverCorePath);
+            Console.WriteLine("UnZip - Citizen");
             FileExtractor.Zip(download, Program.Configuration.serverCorePath);
+            Console.WriteLine("Finish !");
         }
 
         public List<string> GetOptions()
