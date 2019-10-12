@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="DotNetZip" Version="1.13.4" />
+      <PackageReference Include="HtmlAgilityPack" Version="1.11.16" />
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.3-beta2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Utils\ExtratFile.cs" />
+      <Compile Remove="View\ConsoleViewOptions.cs" />
+      <Compile Remove="View\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Config.Json.json" />
+      <None Remove="View\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Config.json" />
+      <Content Include="Config.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="View\**" />
+    </ItemGroup>
+
+</Project>
